@@ -21,4 +21,14 @@ class SupabaseService {
   Future insertFood(Food food) async {
     await supabase.from('food_tb').insert(food.toJson());
   }
+
+  //สร้างเมธอดแก้ไขข้อมูลอาหารใน food_tb ใน Supabase
+  Future updateFood(String id, Food food) async {
+    await supabase.from('food_tb').update(food.toJson()).eq('id', id);
+  }
+
+  //สร้างเมธอดลบข้อมูลอาหารใน food_tb ใน Supabase
+  Future deleteFood(String id) async {
+    await supabase.from('food_tb').delete().eq('id', id);
+  }
 }
